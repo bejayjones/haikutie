@@ -6,6 +6,7 @@ import (
 	"embed"
 	db "haikutie/data/db"
 	"log"
+
 	_ "modernc.org/sqlite" // Pure Go SQLite driver
 )
 
@@ -24,7 +25,7 @@ type GetReceivedHaikusRow = db.GetReceivedHaikusRow
 
 func InitDB() *Helper {
 	// Open database with pure Go driver
-	database, err := sql.Open("sqlite", "./haiku.db")
+	database, err := sql.Open("sqlite", "./sqlite/haiku.db")
 	if err != nil {
 		log.Fatal(err)
 	}
