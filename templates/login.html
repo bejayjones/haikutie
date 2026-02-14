@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {{ template "header" .}}
+</head>
+<body>
+    <section class="hero is-fullheight is-danger">
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns is-centered">
+                    <div class="column is-5-tablet is-4-desktop">
+                        <div class="box">
+                            <h1 class="title has-text-centered has-text-black">haikutie</h1>
+                            <p class="subtitle has-text-centered has-text-black">send haikus</p>
+
+                            {{if .Error}}
+                            <div class="notification is-danger">
+                                {{.Error}}
+                            </div>
+                            {{end}}
+
+                            <form method="POST" action="/login">
+                                <div class="field">
+                                    <label class="label">username</label>
+                                    <div class="control">
+                                        <input class="input" type="text" name="username" required autofocus>
+                                    </div>
+                                </div>
+
+                                <div class="field">
+                                    <label class="label">password</label>
+                                    <div class="control">
+                                        <input class="input" type="password" name="password" required>
+                                    </div>
+                                </div>
+
+                                <div class="field">
+                                    <div class="control">
+                                        <button class="button is-primary is-fullwidth" type="submit">
+                                            login
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <div class="has-text-centered mt-4">
+                                <a href="/register">register</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

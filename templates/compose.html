@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<head>
+    {{ template "header" .}}
+</head>
+<body>
+<section class="section">
+    <div class="container">
+        <nav class="level mb-5">
+            <div class="level-left">
+                <div class="level-item">
+                    <h1 class="title">write a haiku</h1>
+                </div>
+            </div>
+            <div class="level-right">
+                <div class="level-item">
+                    <a href="/library" class="button is-light">your haikus</a>
+                </div>
+                <div class="level-item">
+                    <a href="/logout" class="button is-light">logout</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="columns is-centered">
+            <div class="column is-6">
+                <div id="message-container"></div>
+                
+                <div class="box">
+                    <form method="post", action="/send">
+                        <div class="field">
+                            <label class="label">Send to:</label>
+                            <div class="control">
+                                <div class="select is-fullwidth">
+                                    <select name="to_user_id" required>
+                                        <option value="">choose a recipient. . .</option>
+                                        {{range .Users}}
+                                        <option value="{{.ID}}">{{.Username}}</option>
+                                        {{end}}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="notification is-light">
+                            <p class="has-text-centered mb-2"><strong>haiku format</strong></p>
+                            <p class="has-text-centered is-size-7">5 syllables / 7 syllables / 5 syllables</p>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">first line (5 syllables)</label>
+                            <div class="control">
+                                <input 
+                                    class="input" 
+                                    type="text" 
+                                    name="line1" 
+                                    placeholder="An old silent pond"
+                                    required>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">second line (7 syllables)</label>
+                            <div class="control">
+                                <input 
+                                    class="input" 
+                                    type="text" 
+                                    name="line2" 
+                                    placeholder="A frog jumps into the pond"
+                                    required>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">third line (5 syllables)</label>
+                            <div class="control">
+                                <input 
+                                    class="input" 
+                                    type="text" 
+                                    name="line3" 
+                                    placeholder="Splash! Silence again"
+                                    required>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <div class="control">
+                                <button class="button is-primary is-fullwidth" type="submit">
+                                    Send Haiku
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

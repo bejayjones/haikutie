@@ -1,0 +1,24 @@
+# Binaries
+haikutie
+*.exe
+
+# Database
+*.db
+*.db-shm
+*.db-wal
+
+# Go
+*.o
+*.a
+*.so
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+/tmp/

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {{ template "header" .}}
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <nav class="level mb-5">
+                <div class="level-left">
+                    <div class="level-item">
+                        <h1 class="title">your haikus</h1>
+                    </div>
+                </div>
+                <div class="level-right">
+                    <div class="level-item">
+                        <span class="tag is-info is-medium">hi, {{.User.Username}}!</span>
+                    </div>
+                    <div class="level-item">
+                        <a href="/compose" class="button is-primary">
+                            <span>send a haiku</span>
+                        </a>
+                    </div>
+                    <div class="level-item">
+                        <a href="/logout" class="button is-light">logout</a>
+                    </div>
+                </div>
+            </nav>
+            <div>
+                {{template "haikus-list.html" .}}
+            </div>
+        </div>
+    </section>
+</body>
+</html>

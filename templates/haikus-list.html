@@ -1,0 +1,33 @@
+{{define "haikus-list.html"}}
+{{if .Haikus}}
+    <div class="columns is-multiline">
+        {{range .Haikus}}
+        <div class="column is-one-third">
+            <div class="card haiku-card">
+                <div class="card-content">
+                    <div class="content haiku-text">
+                        <p>{{.Line1}}</p>
+                        <p>{{.Line2}}</p>
+                        <p>{{.Line3}}</p>
+                    </div>
+                </div>
+                <footer class="card-footer">
+                    <p class="card-footer-item">
+                        <span class="tag is-link">from: {{.FromUsername}}</span>
+                    </p>
+                    <p class="card-footer-item">
+                        {{if .CreatedAt.Valid}}
+                        <span class="tag is-light">{{.CreatedAt.Time.Format "Jan 2, 2006"}}</span>
+                        {{end}}
+                    </p>
+                </footer>
+            </div>
+        </div>
+        {{end}}
+    </div>
+{{else}}
+    <div class="notification is-info">
+        <p class="has-text-centered">no haikus yet :(</p>
+    </div>
+{{end}}
+{{end}}
