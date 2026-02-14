@@ -171,7 +171,6 @@ func (h *Handler) Compose(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *Handler) SendHaiku(w http.ResponseWriter, r *http.Request) {
-	fmt.Print(r.FormValue("line1"))
 	if r.Method != "POST" {
 		http.Redirect(w, r, "/compose", http.StatusSeeOther)
 		return
@@ -198,15 +197,6 @@ func (h *Handler) SendHaiku(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
-
-	// Return success message for Datastar
-	w.Header().Set("Content-Type", "text/html")
-	w.Write([]byte(`
-		<div class="notification is-success">
-			<button class="delete" onclick="this.parentElement.remove()"></button>
-			Haiku sent successfully!
-		</div>
-	`))
 	http.Redirect(w, r, "/library", http.StatusSeeOther)
 }
 
@@ -223,7 +213,6 @@ func (h *Handler) ReceivedHaikus(w http.ResponseWriter, r *http.Request) {
 		haikus = []data.GetReceivedHaikusRow{}
 	}
 
-	// Return haikus HTML fragment for Datastar
 	h.templates.ExecuteTemplate(w, "haikus-list.html", map[string]interface{}{
 		"Haikus": haikus,
 	})
