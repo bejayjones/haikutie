@@ -207,6 +207,7 @@ func (h *Handler) SendHaiku(w http.ResponseWriter, r *http.Request) {
 			Haiku sent successfully!
 		</div>
 	`))
+	http.Redirect(w, r, "/library", http.StatusSeeOther)
 }
 
 func (h *Handler) ReceivedHaikus(w http.ResponseWriter, r *http.Request) {
