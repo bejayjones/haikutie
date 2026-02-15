@@ -2,9 +2,6 @@ package models
 
 import "time"
 
-// These models match what sqlc will generate
-// You can also just use the sqlc-generated types directly
-
 type UserView struct {
 	ID       int64
 	Username string

@@ -7,7 +7,7 @@ import (
 	db "haikutie/data/db"
 	"log"
 
-	_ "modernc.org/sqlite" // Pure Go SQLite driver
+	_ "modernc.org/sqlite"
 )
 
 //go:embed schema.sql
@@ -49,8 +49,6 @@ func InitDB() *Helper {
 		Queries: queries,
 	}
 }
-
-// Helper methods that wrap sqlc-generated code
 
 func (h *Helper) CreateUserHelper(username, password string) error {
 	_, err := h.Queries.CreateUser(context.Background(), db.CreateUserParams{

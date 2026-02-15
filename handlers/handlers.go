@@ -22,7 +22,6 @@ func New(database *data.Helper) *Handler {
 	}
 }
 
-// Session management (simplified)
 func (h *Handler) getCurrentUserID(r *http.Request) (int64, bool) {
 	cookie, err := r.Cookie("user_id")
 	if err != nil {
